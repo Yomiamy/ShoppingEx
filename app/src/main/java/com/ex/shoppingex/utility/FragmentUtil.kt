@@ -67,7 +67,7 @@ object FragmentUtil {
         viewID: Int,
         fragment: Fragment,
         tag: String,
-        isAddToBackStack: Boolean = false,
+        isAddToBackStack: Boolean = true,
         bundle: Bundle? = null
     ) {
         val fragmentTransaction = fragmentManager.beginTransaction()
