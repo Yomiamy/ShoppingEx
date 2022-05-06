@@ -10,4 +10,5 @@
 
 
     <color name="shopping_list_toolbar_bg">#008FDF</color>
+    <color name="shopping_item_price">#C25782</color>
 </resources>
