@@ -7,11 +7,12 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.ex.shoppingex.R
 import com.ex.shoppingex.databinding.ViewShoppingItemBinding
 import com.ex.shoppingex.data.ShoppingItemInfo
 
-class ShoppingListAdapter(context: Context):ListAdapter<ShoppingItemInfo, ShoppingListAdapter.ViewHolder>(DiffCallback){
+class ShoppingListAdapter(val context: Context):ListAdapter<ShoppingItemInfo, ShoppingListAdapter.ViewHolder>(DiffCallback){
 
     private val mLayoutInflater:LayoutInflater = LayoutInflater.from(context)
 
@@ -35,6 +36,10 @@ class ShoppingListAdapter(context: Context):ListAdapter<ShoppingItemInfo, Shoppi
     class ViewHolder(val binding: ViewShoppingItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(itemInfo: ShoppingItemInfo) {
             binding.apply {
+                tvMartName.text = itemInfo.martNameDispStr
+                tvFinalPrice.text = itemInfo.finalPriceDispStr
+                Glide.with(binding.root).load(itemInfo.imageUrl).into(ivItemPhoto)
+
                 executePendingBindings()
             }
         }
