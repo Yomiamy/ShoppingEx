@@ -7,8 +7,9 @@
 
         <ImageView
             android:id="@+id/iv_item_photo"
-            android:layout_width="70dp"
+            android:layout_width="100dp"
             android:layout_height="100dp"
+
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
@@ -38,7 +39,7 @@
             android:id="@+id/tv_final_price"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
+            android:layout_marginBottom="5dp"
             android:maxLines="2"
             android:ellipsize="end"
             android:gravity="start"
