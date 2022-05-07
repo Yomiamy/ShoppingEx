@@ -15,5 +15,6 @@ class MyApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
+        ApiInstanceBuilder.init(applicationContext, Constants.API_DOMAIN)
     }
 }
