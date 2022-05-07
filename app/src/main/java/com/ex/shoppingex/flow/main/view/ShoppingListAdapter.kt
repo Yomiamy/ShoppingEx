@@ -34,12 +34,20 @@ class ShoppingListAdapter(val mContext: Context, val mViewModel:ShoppingListView
         holder.bind(itemInfo)
     }
 
-    class ViewHolder(val binding: ViewShoppingItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(val binding: ViewShoppingItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(itemInfo: ShoppingItemInfo) {
             binding.apply {
                 tvMartName.text = itemInfo.martNameDispStr
                 tvFinalPrice.text = itemInfo.finalPriceDispStr
-                Glide.with(binding.root).load(itemInfo.imageUrl).into(ivItemPhoto)
+
+                Glide.with(binding.root)
+                    .load(itemInfo.imageUrl)
+                    .centerCrop()
+                    .into(ivItemPhoto)
+
+                root.setOnClickListener {
+                    mViewModel.setSelectedShoppingItemInfo(itemInfo)
+                }
 
                 executePendingBindings()
             }
