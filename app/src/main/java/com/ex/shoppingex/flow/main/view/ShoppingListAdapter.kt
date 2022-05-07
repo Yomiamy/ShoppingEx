@@ -11,10 +11,11 @@ import com.bumptech.glide.Glide
 import com.ex.shoppingex.R
 import com.ex.shoppingex.databinding.ViewShoppingItemBinding
 import com.ex.shoppingex.data.ShoppingItemInfo
+import com.ex.shoppingex.flow.main.viewmodel.ShoppingListViewModel
 
-class ShoppingListAdapter(val context: Context):ListAdapter<ShoppingItemInfo, ShoppingListAdapter.ViewHolder>(DiffCallback){
+class ShoppingListAdapter(val mContext: Context, val mViewModel:ShoppingListViewModel):ListAdapter<ShoppingItemInfo, ShoppingListAdapter.ViewHolder>(DiffCallback){
 
-    private val mLayoutInflater:LayoutInflater = LayoutInflater.from(context)
+    private val mLayoutInflater:LayoutInflater = LayoutInflater.from(mContext)
 
     fun addItems(itemInfos: List<ShoppingItemInfo>) {
         submitList(itemInfos)
