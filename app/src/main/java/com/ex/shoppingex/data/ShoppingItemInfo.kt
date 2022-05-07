@@ -12,7 +12,7 @@ data class ShoppingItemInfo(val price:Int?,
         get() = "$${finalPrice ?: 0}"
 
     val martNameDispStr:String
-        get() = "$${finalPrice ?: 0}"
+        get() = "$${martName ?: 0}"
 
     override fun equals(other: Any?): Boolean {
         if(other == null || other !is ShoppingItemInfo) {
