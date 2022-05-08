@@ -18,12 +18,13 @@ class ShoppingListViewModel(application: Application):AndroidViewModel(applicati
     private val mContext: Context
         get() = getApplication<Application>().applicationContext
 
-    fun getShoppingList(): MutableLiveData<List<ShoppingItemInfo>> {
-        mModel.getShoppingList { list, error ->
-            mShoppingList.value = if (error != null) {
+    fun getShoppingList(keyword:String): MutableLiveData<List<ShoppingItemInfo>> {
+        mModel.getShoppingList(keyword) { list, error ->
+            mShoppingList.value = list
+
+            if (error != null) {
                 Toast.makeText(mContext, "Something error, No data fetched!", LENGTH_SHORT).show()
-                emptyList()
-            } else list
+            }
         }
         return mShoppingList
     }

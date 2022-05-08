@@ -16,21 +16,30 @@ class ShoppingListModel {
     }
 
     private lateinit var mDisposable: Disposable
+    private var mShoppingList:List<ShoppingItemInfo> = emptyList()
 
     @SuppressLint("CheckResult")
-    fun getShoppingList(callback: (List<ShoppingItemInfo>?, Throwable?) -> Unit) {
-        mDisposable = ApiInstanceBuilder.build(IApi::class.java)
-            .getShoppingList()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                Log.d(TAG, "List data size = ${it.data?.size}")
-                callback(it.data, null)
-            }, {
-                Log.d(TAG, "Error = ${it.message}")
-                it.printStackTrace()
-                callback(null, it)
-            })
+    fun getShoppingList(keyword:String, callback: (List<ShoppingItemInfo>?, Throwable?) -> Unit) {
+        if(keyword.isNullOrEmpty() && mShoppingList.isEmpty()) {
+            mDisposable = ApiInstanceBuilder.build(IApi::class.java)
+                .getShoppingList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    mShoppingList = it.data ?: emptyList()
+
+                    Log.d(TAG, "List data size = ${it.data?.size}")
+                    callback(mShoppingList, null)
+                }, {
+                    Log.d(TAG, "Error = ${it.message}")
+                    it.printStackTrace()
+                    callback(emptyList(), it)
+                })
+        } else if (!keyword.isNullOrEmpty()) {
+            val filteredShoppingList = mShoppingList.filter { it.martName?.contains(keyword) ?: false }
+
+            callback(filteredShoppingList, null)
+        }
     }
 
     fun clear() {
