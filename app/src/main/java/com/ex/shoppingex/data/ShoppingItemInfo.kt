@@ -1,5 +1,7 @@
 package com.ex.shoppingex.data
 
+import com.ex.shoppingex.extension.formattedPrice
+
 data class ShoppingItemInfo(val price:Int?,
                             val martShortName:String?,
                             val imageUrl:String?,
@@ -9,7 +11,7 @@ data class ShoppingItemInfo(val price:Int?,
                             val martId:Int?) {
 
     val finalPriceDispStr:String
-        get() = "$${finalPrice ?: 0}"
+        get() = "$${finalPrice?.formattedPrice()}"
 
     val martNameDispStr:String
         get() = "$${martName ?: 0}"
