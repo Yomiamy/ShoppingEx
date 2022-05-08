@@ -1,4 +1,4 @@
-package com.ex.shoppingex.flow.main.model
+package com.ex.shoppingex.flow.shopping_list.model
 
 import android.annotation.SuppressLint
 import android.util.Log

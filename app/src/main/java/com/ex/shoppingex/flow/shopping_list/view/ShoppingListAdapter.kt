@@ -1,4 +1,4 @@
-package com.ex.shoppingex.flow.main.view
+package com.ex.shoppingex.flow.shopping_list.view
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -11,7 +11,7 @@ import com.bumptech.glide.Glide
 import com.ex.shoppingex.R
 import com.ex.shoppingex.databinding.ViewShoppingItemBinding
 import com.ex.shoppingex.data.ShoppingItemInfo
-import com.ex.shoppingex.flow.main.viewmodel.ShoppingListViewModel
+import com.ex.shoppingex.flow.shopping_list.viewmodel.ShoppingListViewModel
 import com.ex.shoppingex.utility.ViewUtil
 
 class ShoppingListAdapter(val mContext: Context, val mViewModel:ShoppingListViewModel):ListAdapter<ShoppingItemInfo, ShoppingListAdapter.ViewHolder>(DiffCallback){

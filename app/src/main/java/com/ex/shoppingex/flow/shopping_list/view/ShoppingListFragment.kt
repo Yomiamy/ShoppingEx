@@ -1,4 +1,4 @@
-package com.ex.shoppingex.flow.main.view
+package com.ex.shoppingex.flow.shopping_list.view
 
 import android.os.Bundle
 import android.util.Log
@@ -12,8 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ex.shoppingex.R
 import com.ex.shoppingex.databinding.FragmentShoppingListBinding
-import com.ex.shoppingex.data.ShoppingItemInfo
-import com.ex.shoppingex.flow.main.viewmodel.ShoppingListViewModel
+import com.ex.shoppingex.flow.shopping_list.viewmodel.ShoppingListViewModel
 
 class ShoppingListFragment : Fragment() {
 
