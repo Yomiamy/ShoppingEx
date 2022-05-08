@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -54,10 +55,20 @@ class ShoppingListFragment : Fragment() {
 
             setHasFixedSize(true)
         }
+
+        mBinding.etSearch.addTextChangedListener {
+            val keyword:String = it.toString()
+
+            if(keyword.isNullOrEmpty()) {
+                return@addTextChangedListener
+            }
+
+            mViewModel.getShoppingList(keyword)
+        }
     }
 
     private fun initData() {
-        mViewModel.getShoppingList().observe(requireActivity()) {
+        mViewModel.getShoppingList("").observe(requireActivity()) {
             this.mShoppingListAdapter.addItems(it)
         }
 

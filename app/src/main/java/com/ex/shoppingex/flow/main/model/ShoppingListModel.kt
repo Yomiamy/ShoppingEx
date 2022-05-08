@@ -35,7 +35,7 @@ class ShoppingListModel {
                     it.printStackTrace()
                     callback(emptyList(), it)
                 })
-        } else if (!keyword.isNullOrEmpty()) {
+        } else {
             val filteredShoppingList = mShoppingList.filter { it.martName?.contains(keyword) ?: false }
 
             callback(filteredShoppingList, null)
