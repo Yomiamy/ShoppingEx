@@ -32,15 +32,21 @@ class ShoppingListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        this.mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shopping_list, container, false)
+        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shopping_list, container, false)
 
         initView()
         initData()
-        return this.mBinding.root
+        return mBinding.root
+    }
+
+    override fun onDestroyView() {
+        mViewModel.clear()
+
+        super.onDestroyView()
     }
 
     private fun initView() {
-        this.mBinding.rvShoppingList.apply {
+        mBinding.rvShoppingList.apply {
             mViewModel = ViewModelProvider(this@ShoppingListFragment).get(ShoppingListViewModel::class.java)
             layoutManager = LinearLayoutManager(context)
             mShoppingListAdapter = ShoppingListAdapter(context, mViewModel)

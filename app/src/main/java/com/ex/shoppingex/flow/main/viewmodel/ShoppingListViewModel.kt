@@ -33,4 +33,8 @@ class ShoppingListViewModel(application: Application):AndroidViewModel(applicati
     fun setSelectedShoppingItemInfo(itemInfo:ShoppingItemInfo) {
         mSelectedShoppingItemInfo.value = itemInfo
     }
+
+    fun clear() {
+        mModel.clear()
+    }
 }

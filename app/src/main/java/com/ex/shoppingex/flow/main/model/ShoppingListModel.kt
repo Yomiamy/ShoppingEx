@@ -6,6 +6,7 @@ import com.ex.shoppingex.data.ShoppingItemInfo
 import com.ex.shoppingex.net.api.ApiInstanceBuilder
 import com.ex.shoppingex.net.api.IApi
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class ShoppingListModel {
@@ -14,9 +15,11 @@ class ShoppingListModel {
         const val TAG = "ShoppingListModel"
     }
 
+    private lateinit var mDisposable: Disposable
+
     @SuppressLint("CheckResult")
     fun getShoppingList(callback: (List<ShoppingItemInfo>?, Throwable?) -> Unit) {
-        ApiInstanceBuilder.build(IApi::class.java)
+        mDisposable = ApiInstanceBuilder.build(IApi::class.java)
             .getShoppingList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -28,5 +31,11 @@ class ShoppingListModel {
                 it.printStackTrace()
                 callback(null, it)
             })
+    }
+
+    fun clear() {
+        if(!mDisposable.isDisposed) {
+            mDisposable.dispose()
+        }
     }
 }
