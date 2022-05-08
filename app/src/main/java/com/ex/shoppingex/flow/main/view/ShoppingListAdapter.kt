@@ -12,12 +12,16 @@ import com.ex.shoppingex.R
 import com.ex.shoppingex.databinding.ViewShoppingItemBinding
 import com.ex.shoppingex.data.ShoppingItemInfo
 import com.ex.shoppingex.flow.main.viewmodel.ShoppingListViewModel
+import com.ex.shoppingex.utility.ViewUtil
 
 class ShoppingListAdapter(val mContext: Context, val mViewModel:ShoppingListViewModel):ListAdapter<ShoppingItemInfo, ShoppingListAdapter.ViewHolder>(DiffCallback){
 
     private val mLayoutInflater:LayoutInflater = LayoutInflater.from(mContext)
+    private var mKeyword:String = ""
 
-    fun addItems(itemInfos: List<ShoppingItemInfo>) {
+    fun addItems(keyword:String, itemInfos: List<ShoppingItemInfo>) {
+        mKeyword = keyword
+
         submitList(itemInfos)
         notifyDataSetChanged()
     }
@@ -37,7 +41,7 @@ class ShoppingListAdapter(val mContext: Context, val mViewModel:ShoppingListView
     inner class ViewHolder(val binding: ViewShoppingItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(itemInfo: ShoppingItemInfo) {
             binding.apply {
-                tvMartName.text = itemInfo.martNameDispStr
+                tvMartName.text = ViewUtil.highlightText(itemInfo.martNameDispStr, mKeyword, mContext.getColor(R.color.shopping_item_keyword_highlight_bg))
                 tvFinalPrice.text = itemInfo.finalPriceDispStr
 
                 Glide.with(binding.root)

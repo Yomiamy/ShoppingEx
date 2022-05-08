@@ -26,6 +26,7 @@ class ShoppingListFragment : Fragment() {
     private lateinit var mBinding:FragmentShoppingListBinding
     private lateinit var mViewModel: ShoppingListViewModel
     private lateinit var mShoppingListAdapter: ShoppingListAdapter
+    private var mKeyword:String = ""
 
 
     override fun onCreateView(
@@ -63,13 +64,14 @@ class ShoppingListFragment : Fragment() {
                 return@addTextChangedListener
             }
 
+            mKeyword = keyword
             mViewModel.getShoppingList(keyword)
         }
     }
 
     private fun initData() {
-        mViewModel.getShoppingList("").observe(requireActivity()) {
-            this.mShoppingListAdapter.addItems(it)
+        mViewModel.getShoppingList(mKeyword).observe(requireActivity()) {
+            this.mShoppingListAdapter.addItems(mKeyword, it)
         }
 
         mViewModel.obsSelectedShoppingItemInfo().observe(requireActivity()) {
