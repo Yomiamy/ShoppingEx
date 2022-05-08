@@ -15,7 +15,7 @@ import okhttp3.OkHttpClient
 import java.io.InputStream
 
 @GlideModule
-class MyGlideModule : AppGlideModule() {
+class CustomGlideModule : AppGlideModule() {
 
     companion object {
         private const val THREAD_SOURCE_NAME = "General"

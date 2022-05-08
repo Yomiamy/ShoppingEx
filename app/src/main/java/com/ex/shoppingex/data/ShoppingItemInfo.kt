@@ -1,5 +1,7 @@
 package com.ex.shoppingex.data
 
+import com.ex.shoppingex.extension.formattedPrice
+
 data class ShoppingItemInfo(val price:Int?,
                             val martShortName:String?,
                             val imageUrl:String?,
@@ -9,10 +11,10 @@ data class ShoppingItemInfo(val price:Int?,
                             val martId:Int?) {
 
     val finalPriceDispStr:String
-        get() = "$${finalPrice ?: 0}"
+        get() = "$${finalPrice?.formattedPrice()}"
 
     val martNameDispStr:String
-        get() = "$${finalPrice ?: 0}"
+        get() = "$${martName ?: 0}"
 
     override fun equals(other: Any?): Boolean {
         if(other == null || other !is ShoppingItemInfo) {
