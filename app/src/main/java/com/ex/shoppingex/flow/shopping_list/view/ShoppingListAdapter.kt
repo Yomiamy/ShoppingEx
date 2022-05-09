@@ -44,11 +44,6 @@ class ShoppingListAdapter(val mContext: Context, val mViewModel:ShoppingListView
                 shoppingItemInfo = itemInfo
                 tvMartName.text = ViewUtil.highlightText(itemInfo.martNameDispStr, mKeyword, mContext.getColor(R.color.shopping_item_keyword_highlight_bg))
 
-                Glide.with(binding.root)
-                    .load(itemInfo.imageUrl)
-                    .fitCenter()
-                    .into(ivItemPhoto)
-
                 root.setOnClickListener {
                     mViewModel.setSelectedShoppingItemInfo(itemInfo)
                 }

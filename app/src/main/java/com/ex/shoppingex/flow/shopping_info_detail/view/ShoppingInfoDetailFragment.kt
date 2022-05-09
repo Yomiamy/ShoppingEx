@@ -50,11 +50,6 @@ class ShoppingInfoDetailFragment : Fragment() {
     }
 
     private fun initView() {
-        Glide.with(this)
-            .load(mViewModel.shoppingItemInfo?.imageUrl)
-            .fitCenter()
-            .into(mBinding.ivPhoto)
-
         mViewModel.clickListener.set {
             when(it.id) {
                 R.id.iv_back -> requireActivity().onBackPressed()

@@ -11,12 +11,14 @@ class ShoppingInfoDetailViewModel {
     var martId = MutableLiveData<String>()
     val martName = MutableLiveData<String>()
     val price = MutableLiveData<String>()
+    val imageUrl =  MutableLiveData<String>()
     var shoppingItemInfo: ShoppingItemInfo? = null
         set(itemInfo) {
             field = itemInfo
             martId.value = itemInfo?.martIdDispStr
             martName.value =  itemInfo?.martNameDispStr
             price.value = itemInfo?.finalPriceDispStr
+            imageUrl.value = itemInfo?.imageUrl
         }
         get() = field
 }
