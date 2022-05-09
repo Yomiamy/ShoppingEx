@@ -12,7 +12,10 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ex.shoppingex.R
 import com.ex.shoppingex.databinding.FragmentShoppingListBinding
+import com.ex.shoppingex.flow.shopping_info_detail.view.ShoppingInfoDetailFragment
+import com.ex.shoppingex.flow.shopping_info_detail.view.ShoppingInfoDetailFragment.Companion.BUNDLE_KEY_SHOPPING_ITEM_INFO
 import com.ex.shoppingex.flow.shopping_list.viewmodel.ShoppingListViewModel
+import com.ex.shoppingex.utility.FragmentUtil
 
 class ShoppingListFragment : Fragment() {
 
@@ -27,16 +30,20 @@ class ShoppingListFragment : Fragment() {
     private lateinit var mShoppingListAdapter: ShoppingListAdapter
     private var mKeyword:String = ""
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        mBinding = DataBindingUtil.inflate(layoutInflater, R.layout.fragment_shopping_list, null, false)
+
+        initView()
+        initData()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        mBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_shopping_list, container, false)
-
-        initView()
-        initData()
         return mBinding.root
     }
 
@@ -70,7 +77,18 @@ class ShoppingListFragment : Fragment() {
         }
 
         mViewModel.obsSelectedShoppingItemInfo().observe(requireActivity()) {
-            Log.d(TAG, "Selected item = ${it.martName}")
+            Log.d(TAG, "Selected item = ${it?.martName}")
+
+            val fragmentManager = requireActivity().supportFragmentManager
+            val bundle = Bundle().apply {
+                putParcelable(BUNDLE_KEY_SHOPPING_ITEM_INFO, it)
+            }
+            FragmentUtil.replaceFragment(fragmentManager,
+                R.id.fl_content,
+                ShoppingInfoDetailFragment.newInstance(),
+                ShoppingInfoDetailFragment.TAG,
+            true,
+                bundle)
         }
     }
 }
