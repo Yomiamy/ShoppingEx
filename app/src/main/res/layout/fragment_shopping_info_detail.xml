@@ -2,6 +2,12 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.ex.shoppingex.flow.shopping_info_detail.viewmodel.ShoppingInfoDetailViewModel" />
+    </data>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -23,7 +29,9 @@
                     android:layout_height="30dp"
                     android:layout_alignParentLeft="true"
                     android:layout_centerVertical="true"
-                    android:src="@drawable/ic_back"/>
+                    android:src="@drawable/ic_back"
+                    android:onClick="@{viewModel.clickListener}"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -52,7 +60,7 @@
             android:gravity="start"
             android:textSize="22sp"
             android:textColor="@color/mart_id_info"
-            android:text="@string/shopping_detail_mart_info"
+            android:text="@{@string/shopping_detail_mart_info(viewModel.martId)}"
             app:layout_constraintTop_toBottomOf="@id/iv_photo"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"/>
@@ -65,7 +73,7 @@
             android:ellipsize="end"
             android:gravity="start"
             android:maxLines="2"
-            android:text="123"
+            android:text="@{viewModel.martName}"
             android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -79,7 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:gravity="start"
-            android:text="$29.55"
+            android:text="@{viewModel.price}"
             android:textColor="@color/shopping_item_price"
             android:textSize="18sp"
             android:textStyle="bold"
