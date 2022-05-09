@@ -1,8 +1,9 @@
-package com.ex.shoppingex
+package com.ex.shoppingex.flow
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import com.ex.shoppingex.R
 import com.ex.shoppingex.databinding.ActivityMainBinding
 import com.ex.shoppingex.flow.shopping_list.view.ShoppingListFragment
 import com.ex.shoppingex.utility.FragmentUtil
