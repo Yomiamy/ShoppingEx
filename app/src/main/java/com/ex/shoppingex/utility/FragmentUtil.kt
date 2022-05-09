@@ -37,7 +37,7 @@ object FragmentUtil {
         fragmentTransaction.add(viewID, fragment, tag)
 
         if (isAddToBackStack) {
-            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.addToBackStack(tag)
         }
 
         fragmentTransaction.commit()
@@ -79,7 +79,7 @@ object FragmentUtil {
         fragmentTransaction.replace(viewID, fragment, tag)
 
         if (isAddToBackStack) {
-            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.addToBackStack(tag)
         }
 
         fragmentTransaction.commit()

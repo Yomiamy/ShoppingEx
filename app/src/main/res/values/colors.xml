@@ -8,8 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
+    <!-- ShoppingListFragment -->
     <color name="shopping_list_toolbar_bg">#008FDF</color>
     <color name="shopping_item_price">#C25782</color>
     <color name="shopping_item_keyword_highlight_bg">#FF6200EE</color>
+
+    <!-- ShoppingInfoDetailFragment -->
+    <color name="mart_id_info">#C0C0C0</color>
 </resources>

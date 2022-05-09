@@ -1,4 +1,4 @@
-package com.ex.shoppingex.flow.main.viewmodel
+package com.ex.shoppingex.flow.shopping_list.viewmodel
 
 import android.app.Application
 import android.content.Context
@@ -6,9 +6,8 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.ex.shoppingex.MyApplication
 import com.ex.shoppingex.data.ShoppingItemInfo
-import com.ex.shoppingex.flow.main.model.ShoppingListModel
+import com.ex.shoppingex.flow.shopping_list.model.ShoppingListModel
 
 class ShoppingListViewModel(application: Application):AndroidViewModel(application) {
 

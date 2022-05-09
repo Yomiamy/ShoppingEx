@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">ShoppingEx</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- ShoppingInfoDetailFragment -->
+    <string name="shopping_detail_toolbar_title">商品資訊</string>
+    <string name="shopping_detail_mart_info">商品編號:%1$s</string>
 </resources>
