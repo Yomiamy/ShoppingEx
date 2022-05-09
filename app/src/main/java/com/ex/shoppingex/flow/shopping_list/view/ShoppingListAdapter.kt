@@ -46,7 +46,7 @@ class ShoppingListAdapter(val mContext: Context, val mViewModel:ShoppingListView
 
                 Glide.with(binding.root)
                     .load(itemInfo.imageUrl)
-                    .centerCrop()
+                    .fitCenter()
                     .into(ivItemPhoto)
 
                 root.setOnClickListener {
