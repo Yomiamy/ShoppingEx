@@ -41,8 +41,8 @@ class ShoppingListAdapter(val mContext: Context, val mViewModel:ShoppingListView
     inner class ViewHolder(val binding: ViewShoppingItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(itemInfo: ShoppingItemInfo) {
             binding.apply {
+                shoppingItemInfo = itemInfo
                 tvMartName.text = ViewUtil.highlightText(itemInfo.martNameDispStr, mKeyword, mContext.getColor(R.color.shopping_item_keyword_highlight_bg))
-                tvFinalPrice.text = itemInfo.finalPriceDispStr
 
                 Glide.with(binding.root)
                     .load(itemInfo.imageUrl)
