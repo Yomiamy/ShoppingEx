@@ -59,10 +59,6 @@ class ShoppingListFragment : Fragment() {
         mBinding.etSearch.addTextChangedListener {
             val keyword:String = it.toString()
 
-            if(keyword.isNullOrEmpty()) {
-                return@addTextChangedListener
-            }
-
             mKeyword = keyword
             mViewModel.getShoppingList(keyword)
         }
